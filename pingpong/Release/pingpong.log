@@ -1,0 +1,32 @@
+﻿Build started 19-08-2011 18:56:05.
+     1>Project "G:\stuff\pingpong\pingpong\pingpong.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\pingpong.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt camera.cpp
+         camera.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\stuff\pingpong\Release\pingpong.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\pingpong.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\stuff\pingpong\Release\pingpong.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\stuff\pingpong\Release\pingpong.lib" /MACHINE:X86 Release\camera.obj
+         Release\ExtensionManager.obj
+         Release\game.obj
+         Release\glShader.obj
+         Release\keyboardinterface.obj
+         Release\main.obj
+         Release\mouseinterface.obj
+         Release\player.obj
+         Release\shadermanager.obj
+         Release\terrrain.obj
+         Generating code
+     1>t:\stuff\pingpong\pingpong\keyboardinterface.cpp(63): warning C4715: 'keyboardinterface::GetNextEvent' : not all control paths return a value
+         Finished generating code
+         pingpong.vcxproj -> G:\stuff\pingpong\Release\pingpong.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"G:\stuff\pingpong\Release\pingpong.exe;#1" /manifest Release\pingpong.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\pingpong.unsuccessfulbuild".
+         Touching "Release\pingpong.lastbuildstate".
+     1>Done Building Project "G:\stuff\pingpong\pingpong\pingpong.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.33
