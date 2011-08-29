@@ -82,6 +82,7 @@
     <ClCompile Include="keyboardinterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mouseinterface.cpp" />
+    <ClCompile Include="openglinterface.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="shadermanager.cpp" />
     <ClCompile Include="terrrain.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="glShader.h" />
     <ClInclude Include="keyboardinterface.h" />
     <ClInclude Include="mouseinterface.h" />
+    <ClInclude Include="openglinterface.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="shadermanager.h" />
     <ClInclude Include="terrrain.h" />

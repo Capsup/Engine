@@ -11,13 +11,10 @@
 #include <GL/wglext.h>
 //#include <cml/cml.h>
 #include "ExtensionManager.h"
-#include "shadermanager.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-//#include "game.h"
-#include "camera.h"
 #include "keyboardinterface.h"
+#include "game.h"
+#include <string>
+#include <time.h>
 
 
 
@@ -40,33 +37,30 @@ struct Globals
 	// height of the CLIENT AREA
 	// (DRAWABLE REGION in Window)
 
-	//game game;
+	game game;
 
-	camera camera;
+	/*camera camera;
 
 	keyboardinterface keyboard;
+
+	mouseinterface mouse;*/
 
 };
 
 #pragma region Globals and Prototypes
 Globals g;
 
-GLint vColorValue;
-GLint mvpMatrix;
-GLuint FlatShader;
-
 LRESULT CALLBACK WndProc( HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam );
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow );
-void draw();
-void move();
+
 #pragma endregion
-#include <string>
+
 #pragma region New WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow )
 {
 	std::string sGlobalPath = std::string(__argv[0]).substr(0, std::string(__argv[0]).rfind('\\') );
 	SetCurrentDirectory( tools::StringToWString( sGlobalPath ).c_str() );
-	MessageBoxA( NULL, (LPCSTR) sGlobalPath.c_str(), "test" , MB_OK );
+	//MessageBoxA( NULL, (LPCSTR) sGlobalPath.c_str(), "test" , MB_OK );
 
 	g.hInstance = hInstance;
 
@@ -186,14 +180,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 	sprintf(b, "Chosen pixel format is MSAA with %d samples.\n", nResults );
 	MessageBoxA( NULL, b, "Chosen MSAA", MB_OK );*/
 
+	g.game = game( g.hdc );
+
 	MSG msg;
 
-	shadermanager sm; 
-
-	FlatShader = sm.LoadFromFile( sGlobalPath+"/content/shaders/flat/FlatShader.fp", sGlobalPath+"/content/shaders/flat/FlatShader.vp" );
-
-	vColorValue = glGetUniformLocation( FlatShader, "vColorValue" );
-	mvpMatrix = glGetUniformLocation( FlatShader, "mvpMatrix" );
+	DWORD current, last;
 
 	
 
@@ -210,36 +201,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 			DispatchMessage( &msg );
 		}
 
-		KeyEvent event;
+		last = current;
+		current = GetTickCount();
 
-		while( g.keyboard.GetNextEvent( event ).type != KeyEventNone )
-		{
-			//if( event.type == KeyEventRelease && event.iKeyCode == 37 )
-			switch( event.iKeyCode )
-			{
-				//glm::mat4 lookat = g/*.game*/.camera.GetLookAt();
-				//glm::mat4 lookat = g.camera.m_m4LookAt;
-				//glm::rotate( lookat, 90.f, glm::vec3( 0, 0, 1 ) );
-				//lookat *= rotate;
-				//g/*.game*/.camera.LookAt( lookat );
-				g.camera.m_m4LookAt = glm::rotate( g.camera.m_m4LookAt, 90.f, glm::vec3( 0, 1, 0 ) );
-			}
-			/*glViewport(0, 0, g.width,g.height);
-
-			glMatrixMode(GL_PROJECTION);
-			glLoadIdentity();
-
-			glMatrixMode(GL_MODELVIEW);
-			glLoadIdentity();
-
-			glClearColor( 1, 0, 0, 0 );
-			glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );	
-			glLoadIdentity();
-
-			SwapBuffers(g.hdc);*/
-		}
+		DWORD dt = current - last;
 		
-		draw();
+		g.game.Update( dt );
+		g.game.Render();
 		
 	}
 
@@ -249,57 +217,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 }
 #pragma endregion
 
-#pragma region Draw Function
-void draw() 
-{
-	glViewport(0, 0, g.width,g.height);
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glClearColor( 0, 0, 0, 0 );
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );	
-	glLoadIdentity();
-	
-
-	GLfloat vColor[] = { 0.1f, 0.1f, 1.f, 1.0f };
-	/*glm::mat4 projection = glm::perspective( 45.0f, (float) g.width / (float) g.height, 1.f, 1000.f );
-	glm::mat4 translate = glm::translate( glm::mat4( 1.f ), glm::vec3( 1.f, 1.f, 1.f ) );
-	glm::mat4 Model = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
-	glm::mat4 mvp = projection * translate * Model;
-	glm::mat4 lookat = glm::lookAt( glm::vec3( 0.f, 0.f, 10.f ),
-									glm::vec3( 0.f, 0.f, 0.f ),
-									glm::vec3( 0.f, 1.f, 0.f ) );
-	mvp *= lookat;*/
-
-	//glm::mat4 mvp = glm::mat4(1.f) * g.camera.GetLookAt() * glm::perspective( 45.0f, (float) g.width / (float) g.height, 1.f, 1000.f );
-	glm::mat4 mvp = glm::perspective( 45.0f, (float) g.width / (float) g.height, 1.f, 1000.f ) * g.camera.GetLookAt() * glm::mat4(1.f) ;
-
-	glUseProgram( FlatShader );
-		glUniform4fv(vColorValue, 1, vColor);
-		glUniformMatrix4fv(mvpMatrix, 1, GL_FALSE, glm::value_ptr( mvp ) );
-		glBegin (GL_QUAD_STRIP);
-			glColor3f(  1, 0, 0 );
-			glVertex3f( 0, 1, 0 );
-
-			glColor3f(  0, 1, 0 );
-			glVertex3f( 1, 1, 0 );
-
-			glColor3f(  0, 0, 1 );
-			glVertex3f( 0, 0, 0 );
-
-			glColor3f(  1, 1, 1 );
-			glVertex3f( 1, 0, 0 );
-		glEnd();
-	glUseProgram( 0 );
-
-	SwapBuffers(g.hdc);
-
-}
-#pragma endregion
 
 #pragma region WndProc Callback
 LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam ) 
@@ -325,13 +243,13 @@ LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		{
 		unsigned int KeyCode = wparam;
 
-		g.keyboard.Press( KeyCode );
+		g.game.keyboard.Press( KeyCode );
 
 		KeyEvent Event;
 		Event.type = KeyEventPress;
 		Event.iKeyCode = KeyCode;
 
-		g.keyboard.InsertEvent( Event );
+		g.game.keyboard.InsertEvent( Event );
 
 		//return 0;
 		break;
@@ -340,13 +258,13 @@ LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		{
 		unsigned int KeyCode = wparam;
 
-		g.keyboard.Release( KeyCode );
+		g.game.keyboard.Release( KeyCode );
 
 		KeyEvent Event;
 		Event.type = KeyEventRelease;
 		Event.iKeyCode = KeyCode;
 
-		g.keyboard.InsertEvent( Event );
+		g.game.keyboard.InsertEvent( Event );
 
 		//return 0;
 		break;
@@ -359,7 +277,7 @@ LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 
 		if( Event.asciiCode != 0) 
 		{
-			g.keyboard.InsertEvent( Event );
+			g.game.keyboard.InsertEvent( Event );
 		}
 		break;
 		}
