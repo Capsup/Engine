@@ -13,6 +13,7 @@
 #include "ExtensionManager.h"
 #include "keyboardinterface.h"
 #include "game.h"
+#include "openglinterface.h"
 #include <string>
 #include <time.h>
 
@@ -55,6 +56,32 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 
 #pragma endregion
 
+
+	double PCFreq = 0.0;
+
+	// call only needed once...
+	inline void WarmupCounter()
+	{
+		LARGE_INTEGER li;
+		QueryPerformanceFrequency(&li);
+		PCFreq = double(li.QuadPart)/1000.0;
+	}
+
+	inline  __int64 StartCounter()
+	{
+		LARGE_INTEGER li;
+		QueryPerformanceCounter(&li);
+		return (__int64) li.QuadPart;
+	}
+
+	inline  double GetCounterSinceStartMillis(__int64 sinceThisTime)
+	{
+		LARGE_INTEGER li;
+		QueryPerformanceCounter(&li);
+		return double(li.QuadPart-sinceThisTime)/PCFreq;
+	}
+
+
 #pragma region New WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow )
 {
@@ -77,30 +104,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 
 	RegisterClass(&wc);
-	
-	RECT rect;
-	SetRect( &rect, 50,  // left
-					50,  // top
-					850, // right
-					650 ); // bottom
-	
-	g.width = rect.right - rect.left;
-	g.height = rect.bottom - rect.top;
-	
-	AdjustWindowRect( &rect, WS_OVERLAPPEDWINDOW, false);
 
-	g.hwnd = CreateWindow(TEXT("OGLClass"),
-						  TEXT("PingPong"),
-						  WS_OVERLAPPEDWINDOW,
-						  rect.left, rect.top,
-						  rect.right - rect.left, rect.bottom - rect.top,
-						  NULL, NULL,
-						  hInstance, NULL);
-
-	if( g.hwnd == NULL )
-	{
-		Err( TEXT("CreateWindow") );
-	}
+	openglinterface ogl;
+	
+	/*//AdjustWindowRect( &rect, WS_OVERLAPPEDWINDOW, false);
 
 	g.hdc = GetDC( g.hwnd );
 
@@ -157,7 +164,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 	/*char b[100];
 	sprintf(b, "ID# %d as pixelformat!\n", nPixelFormat);
 	MessageBoxA( NULL, b, "Pixelformat", MB_OK );*/
-	
+	/*
 	
 	int result = SetPixelFormat( g.hdc, nPixelFormat, &pfd );
 
@@ -171,7 +178,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 	wglMakeCurrent( g.hdc, g.hglrc );
 
 	if( ExtMan.InitAPI() != true )
-		Err( TEXT("InitAPI") );
+		Err( TEXT("InitAPI") );*/
 	
 	/*char b[100];
 	int attrib[] = { WGL_SAMPLES_ARB };
@@ -180,7 +187,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 	sprintf(b, "Chosen pixel format is MSAA with %d samples.\n", nResults );
 	MessageBoxA( NULL, b, "Chosen MSAA", MB_OK );*/
 
-	g.game = game( g.hdc );
+	bool result = ogl.CreateOGLWindow( 800, 600, true, hInstance );
+
+	if( !result )
+		MessageBoxA( NULL, "Error.", "Error Window", MB_OK );
+
+	g.game = game( ogl.GetHDC() );
 
 	MSG msg;
 
@@ -201,13 +213,23 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 			DispatchMessage( &msg );
 		}
 
-		last = current;
-		current = GetTickCount();
+		/*last = current;
+		current = GetTickCount() / 1000.f;
 
-		DWORD dt = current - last;
-		
+		DWORD dt = current - last;*/
+
+		WarmupCounter();
+
+		__int64 start = StartCounter();
+
+		__int64 last = current;
+
+		__int64 current = GetCounterSinceStartMillis( start );
+
+		__int64 dt = current - last;
+
 		g.game.Update( dt );
-		g.game.Render();
+		g.game.Render( ogl.GetRect().right - ogl.GetRect().left, ogl.GetRect().bottom - ogl.GetRect().top );
 		
 	}
 
@@ -241,18 +263,18 @@ LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 
 	case WM_KEYDOWN:
 		{
-		unsigned int KeyCode = wparam;
+			unsigned int KeyCode = wparam;
 
-		g.game.keyboard.Press( KeyCode );
+			g.game.keyboard.Press( KeyCode );
 
-		KeyEvent Event;
-		Event.type = KeyEventPress;
-		Event.iKeyCode = KeyCode;
+			KeyEvent Event;
+			Event.type = KeyEventPress;
+			Event.iKeyCode = KeyCode;
 
-		g.game.keyboard.InsertEvent( Event );
+			g.game.keyboard.InsertEvent( Event );
 
-		//return 0;
-		break;
+			//return 0;
+			break;
 		}
 	case WM_KEYUP:
 		{

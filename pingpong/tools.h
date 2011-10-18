@@ -131,4 +131,12 @@ namespace tools
 		std::copy(s.begin(), s.end(), temp.begin());
 		return temp; 
 	}
+
+	inline std::string RetrieveGlobalPath()
+	{
+		TCHAR buffer[ MAX_PATH ];
+		GetCurrentDirectory( MAX_PATH, buffer );
+		return WStringToString( buffer );
+	}
+
 }

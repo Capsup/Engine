@@ -62,23 +62,28 @@ void game::Update( float dt )
 		{
 			Camera.AddPitch( 40.f );
 		}
+
+		if( event.type == KeyEventRelease && event.iKeyCode == VK_ESCAPE )
+		{
+			return;
+		}
 	}
 
 	glm::vec2 cursorpos = mouse.GetMousePos();
 	GLint viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 		
-	Camera.AddYaw( ( cursorpos.x - (viewport[2] / 2) ) * 40.f * dt );
-	//g.camera.AddPitch( ( -cursorpos.y - (viewport[3] / 2) ) / 10000 );
+	Camera.AddYaw( ( cursorpos.x - (viewport[2] / 2) ) * 1.f );
+	//Camera.AddPitch( ( -cursorpos.y - (viewport[3] / 2) ) * 1.f );
 
 	mouse.SetMousePos( glm::vec2( viewport[2] / 2, viewport[3] / 2 ) );
 
 	Camera.Apply();
 }
 
-void game::Render() 
+void game::Render( float width, float height ) 
 {
-	glViewport(0, 0, 800,600);
+	glViewport(0, 0, width,height);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -93,7 +98,7 @@ void game::Render()
 
 	GLfloat vColor[] = { 0.1f, 0.1f, 1.f, 1.0f };
 
-	glm::mat4 mvp = glm::perspective( 45.0f, 800.f / 600.f, 1.f, 1000.f ) * Camera.GetLookAt() * glm::mat4(1.f);
+	glm::mat4 mvp = glm::perspective( 45.0f, width / height, 1.f, 1000.f ) * Camera.GetLookAt() * glm::mat4(1.f);
 
 	glUseProgram( FlatShader );
 		glUniform4fv(vColorValue, 1, vColor);

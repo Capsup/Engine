@@ -7,6 +7,7 @@ keyboardinterface::keyboardinterface()
 	{
 		m_KeyList[i] = 0;
 	}
+	m_iEventsAmount = 0;
 }
 
 
@@ -39,6 +40,7 @@ KeyEvent keyboardinterface::GetNextEvent( KeyEvent& var )
 {
 	KeyEvent none;
 	none.type = KeyEventNone;
+	none.iKeyCode = 0;
 	if( m_iEventsAmount < 1 )
 		return none;
 	if( m_KeyEventList[0].type == KeyEventNone )

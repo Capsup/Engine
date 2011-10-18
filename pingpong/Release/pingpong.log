@@ -1,10 +1,147 @@
-﻿Build started 8/26/2011 8:35:10 PM.
+﻿Build started 10/18/2011 6:24:52 PM.
      1>Project "C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\pingpong\pingpong.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\pingpong.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt game.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt game.cpp glShader.cpp main.cpp openglinterface.cpp shadermanager.cpp targa.cpp text.cpp
          game.cpp
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4995: 'strcpy': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4995: 'strcat': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(757): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(766): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(775): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>game.cpp(86): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
+     1>game.cpp(86): warning C4244: 'argument' : conversion from 'float' to 'GLsizei', possible loss of data
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2144): warning C4244: '=' : conversion from 'const wchar_t' to 'char', possible loss of data
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2165) : see reference to function template instantiation '_OutIt std::_Copy_impl<_InIt,_OutIt>(_InIt,_InIt,_OutIt,std::_Nonscalar_ptr_iterator_tag)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2176) : see reference to function template instantiation '_OutIt std::_Copy_impl<const wchar_t*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(131) : see reference to function template instantiation '_OutIt std::copy<std::_String_const_iterator<_Elem,_Traits,_Alloc>,std::_String_iterator<char,std::char_traits<char>,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=std::_String_iterator<char,std::char_traits<char>,std::allocator<char>>,
+                     _Elem=wchar_t,
+                     _Traits=std::char_traits<wchar_t>,
+                     _Alloc=std::allocator<wchar_t>,
+                     _Ty=char,
+                     _InIt=std::_String_const_iterator<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>
+                 ]
+         glShader.cpp
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4995: 'strcpy': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4995: 'strcat': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>glShader.cpp(34): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>glShader.cpp(110): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2144): warning C4244: '=' : conversion from 'const wchar_t' to 'char', possible loss of data
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2165) : see reference to function template instantiation '_OutIt std::_Copy_impl<_InIt,_OutIt>(_InIt,_InIt,_OutIt,std::_Nonscalar_ptr_iterator_tag)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2176) : see reference to function template instantiation '_OutIt std::_Copy_impl<const wchar_t*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(131) : see reference to function template instantiation '_OutIt std::copy<std::_String_const_iterator<_Elem,_Traits,_Alloc>,std::_String_iterator<char,std::char_traits<char>,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=std::_String_iterator<char,std::char_traits<char>,std::allocator<char>>,
+                     _Elem=wchar_t,
+                     _Traits=std::char_traits<wchar_t>,
+                     _Alloc=std::allocator<wchar_t>,
+                     _Ty=char,
+                     _InIt=std::_String_const_iterator<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>
+                 ]
+         main.cpp
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4995: 'strcpy': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4995: 'strcat': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(757): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(766): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string(775): warning C4995: 'swprintf': name was marked as #pragma deprecated
+     1>main.cpp(227): warning C4244: 'initializing' : conversion from 'double' to '__int64', possible loss of data
+     1>main.cpp(231): warning C4244: 'argument' : conversion from '__int64' to 'float', possible loss of data
+     1>main.cpp(232): warning C4244: 'argument' : conversion from 'LONG' to 'float', possible loss of data
+     1>main.cpp(232): warning C4244: 'argument' : conversion from 'LONG' to 'float', possible loss of data
+     1>main.cpp(199): warning C4101: 'last' : unreferenced local variable
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2144): warning C4244: '=' : conversion from 'const wchar_t' to 'char', possible loss of data
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2165) : see reference to function template instantiation '_OutIt std::_Copy_impl<_InIt,_OutIt>(_InIt,_InIt,_OutIt,std::_Nonscalar_ptr_iterator_tag)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2176) : see reference to function template instantiation '_OutIt std::_Copy_impl<const wchar_t*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(131) : see reference to function template instantiation '_OutIt std::copy<std::_String_const_iterator<_Elem,_Traits,_Alloc>,std::_String_iterator<char,std::char_traits<char>,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=std::_String_iterator<char,std::char_traits<char>,std::allocator<char>>,
+                     _Elem=wchar_t,
+                     _Traits=std::char_traits<wchar_t>,
+                     _Alloc=std::allocator<wchar_t>,
+                     _Ty=char,
+                     _InIt=std::_String_const_iterator<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>
+                 ]
+         openglinterface.cpp
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4995: 'strcpy': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4995: 'strcat': name was marked as #pragma deprecated
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(116): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2144): warning C4244: '=' : conversion from 'const wchar_t' to 'char', possible loss of data
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2165) : see reference to function template instantiation '_OutIt std::_Copy_impl<_InIt,_OutIt>(_InIt,_InIt,_OutIt,std::_Nonscalar_ptr_iterator_tag)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility(2176) : see reference to function template instantiation '_OutIt std::_Copy_impl<const wchar_t*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=const wchar_t *
+                 ]
+                 c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(131) : see reference to function template instantiation '_OutIt std::copy<std::_String_const_iterator<_Elem,_Traits,_Alloc>,std::_String_iterator<char,std::char_traits<char>,std::allocator<_Ty>>>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=std::_String_iterator<char,std::char_traits<char>,std::allocator<char>>,
+                     _Elem=wchar_t,
+                     _Traits=std::char_traits<wchar_t>,
+                     _Alloc=std::allocator<wchar_t>,
+                     _Ty=char,
+                     _InIt=std::_String_const_iterator<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>
+                 ]
+         shadermanager.cpp
      1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4995: 'strcpy': name was marked as #pragma deprecated
      1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\tools.h(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
@@ -37,24 +174,30 @@
                      _Ty=char,
                      _InIt=std::_String_const_iterator<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t>>
                  ]
+         targa.cpp
+         text.cpp
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Capsup\documents\visual studio 2010\Projects\pingpong\Release\pingpong.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\pingpong.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Capsup\documents\visual studio 2010\Projects\pingpong\Release\pingpong.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Capsup\documents\visual studio 2010\Projects\pingpong\Release\pingpong.lib" /MACHINE:X86 Release\camera.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\Release\pingpong.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\pingpong.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\Release\pingpong.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\Release\pingpong.lib" /MACHINE:X86 Release\camera.obj
          Release\ExtensionManager.obj
          Release\game.obj
          Release\glShader.obj
          Release\keyboardinterface.obj
          Release\main.obj
          Release\mouseinterface.obj
+         Release\openglinterface.obj
          Release\player.obj
          Release\shadermanager.obj
+         Release\targa.obj
          Release\terrrain.obj
+         Release\text.obj
          Generating code
-     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\keyboardinterface.cpp(63): warning C4715: 'keyboardinterface::GetNextEvent' : not all control paths return a value
-     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\main.cpp(204): warning C4700: uninitialized local variable 'current' used
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\openglinterface.cpp(167): warning C4715: 'openglinterface::GetHDC' : not all control paths return a value
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\keyboardinterface.cpp(65): warning C4715: 'keyboardinterface::GetNextEvent' : not all control paths return a value
+     1>c:\users\capsup\documents\visual studio 2010\projects\pingpong\pingpong\main.cpp(225): warning C4700: uninitialized local variable 'current' used
          Finished generating code
-         pingpong.vcxproj -> C:\Users\Capsup\documents\visual studio 2010\Projects\pingpong\Release\pingpong.exe
+         pingpong.vcxproj -> C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\Release\pingpong.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Capsup\documents\visual studio 2010\Projects\pingpong\Release\pingpong.exe;#1" /manifest Release\pingpong.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Capsup\Documents\Visual Studio 2010\Projects\pingpong\Release\pingpong.exe;#1" /manifest Release\pingpong.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Release\pingpong.unsuccessfulbuild".
          Touching "Release\pingpong.lastbuildstate".
@@ -62,4 +205,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.33
+Time Elapsed 00:00:10.29

@@ -53,6 +53,7 @@ bool ExtensionManager::InitAPI()
 	if( !wglGetCurrentContext() ) 
 		return false;
 	
+	
 	wglChoosePixelFormatARB = (PFNWGLCHOOSEPIXELFORMATARBPROC) wglGetProcAddress("wglChoosePixelFormatARB");
 	wglGetPixelFormatAttribivARB = (PFNWGLGETPIXELFORMATATTRIBIVARBPROC) wglGetProcAddress( "wglGetPixelFormatAttribivARB" );
 	

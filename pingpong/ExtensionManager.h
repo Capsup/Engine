@@ -33,7 +33,7 @@ extern PFNGLGETPROGRAMIVPROC glGetProgramiv;
 class ExtensionManager
 {
 public:
-	ExtensionManager( bool bInitAPI = true );
+	ExtensionManager( bool bInitAPI = false );
 	~ExtensionManager();
 	bool isExtSupported( int ext );
 	bool InitAPI();

@@ -17,7 +17,7 @@ public:
 	game( HDC hdc );
 	~game(void);
 	void Update( float dt );
-	void Render();
+	void Render( float width, float height );
 	keyboardinterface keyboard;
 	mouseinterface mouse;
 	camera Camera;
